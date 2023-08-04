@@ -1,0 +1,34 @@
+<h1>My Cart</h1>
+
+<p>
+  <a routerLink="/shipping">Shipping Prices</a>
+</p>
+
+<div class="cart-item" *ngFor="let item of items">
+  <span>{{ item.name }}</span>
+  <span>{{ item.price | currency }}</span>
+  <span>{{ item.count}}</span>
+  <span class="material-icons" (click)="removeFromCart(item)">delete</span>
+</div>
+
+<!-- o formGroup vai ser o grupo criada no ts com os atributos name e adress
+    ngSubmit chama a função onSubmit que será acionado ao clicar no botão com o tipo submit -->
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+
+  <!-- O formControlName captura a partir do nome do atributo do grupo checkoutForm -->
+  <div>
+    <label for="name">
+      Name
+    </label>
+    <input id="name" type="text" formControlName="name">
+  </div>
+
+  <div>
+    <label for="adress">
+      Adress
+    </label>
+    <input id="adress" type="text" formControlName="adress">
+  </div>
+
+  <button class="button" type="submit">Purchase</button>
+</form>

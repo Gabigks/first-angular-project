@@ -1,0 +1,7 @@
+<!-- Utilizando o produto passado pelo componente pai (ProductListComponent), 
+  verifica se o preço é maior que 700, se for emite uma notificação -->
+<p *ngIf="product && product.price > 700">
+  <!-- No evento de click, é chamado o método emit na função notify, para que esse evento seja emitido -->
+  <!-- Lembrando que o pai ProductListComponent que atua quando o filho gera o evento -->
+  <button type="button" (click)="notify.emit()">Notify Me</button>
+</p>

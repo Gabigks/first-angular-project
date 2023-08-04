@@ -1,0 +1,23 @@
+<h2>Products</h2>
+<div *ngFor="let product of products">
+  <h3>
+    <!-- routerLink, ajuda customizar o elemento de ancora <a>, nesse caso o URL contém um segmento fixo /products 
+      e o último segmento é dinâmico, sendo o id do produto atual, essa ancora leva para o ProductDetails. 
+      Essa rota foi adicionada no RouterModule do app.module -->
+    <a 
+    [title]="product.name + ' details'"
+    [routerLink]="['/products', product.id]"> 
+    {{ product.name }}
+    </a>
+  </h3>
+
+  <p *ngIf="product.description">Description: {{ product.description }}</p>
+
+  <button type="button" (click)="share(product)">Share</button>
+
+  <!-- Elemento para passar o produto atual como entrada(input) para o componente usando a associação de propriedade(property binding) -->
+  <app-product-alerts
+    [product]="product" 
+    (notify)="onNotify(product)">
+  </app-product-alerts>
+</div>
